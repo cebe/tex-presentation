@@ -1,0 +1,37 @@
+%
+% overlays
+%
+
+% http://tex.stackexchange.com/questions/16357/how-can-i-position-an-image-in-an-arbitrary-position-in-beamer
+\usepackage{tikz}
+%\usetikzlibrary{calc, trees, positioning, arrows, shapes, shapes.multipart, shadows, matrix, decorations.pathreplacing, decorations.pathmorphing}
+\usetikzlibrary{arrows, shapes, shapes.multipart, automata}
+\tikzset{
+	every boverlay node/.style={
+		draw=black,fill=white,rounded corners,anchor=north west,
+	},
+}
+\tikzset{
+	every toverlay node/.style={
+		anchor=center
+	},
+}
+\tikzset{
+	every overlay node/.style={
+		draw=white,fill=white,rounded corners,anchor=north west,
+	},
+}
+% Usage:
+% \tikzoverlay at (-1cm,-5cm) {content};%
+% or
+% \tikzoverlay[text width=5cm] at (-1cm,-5cm) {content};%
+\def\tikzboverlay{% A bordered overlay
+	\tikz[baseline,overlay]\node[every boverlay node]
+}%
+\def\tikztoverlay{% A transparent overlay
+	\tikz[baseline,overlay]\node[every toverlay node]
+}%
+\def\tikzoverlay{% A non-transparent unbordered overlay
+	\tikz[baseline,overlay]\node[every overlay node]
+}%
+

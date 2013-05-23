@@ -1,0 +1,57 @@
+\documentclass{beamer}
+
+% german and utf8
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+
+% beamer style
+%\usepackage{beamerthemeshadow}
+\usetheme{Warsaw}
+\usecolortheme[named=black]{structure}
+
+% preview for paused elements
+%\beamersetuncovermixins{\opaqueness<1>{25}}{\opaqueness<2->{15}}
+
+% include all beamer features
+\newcommand{\beamerFeatures}{./features} % change this path to where features are located
+\input{\beamerFeatures/all.tex}
+
+\title{Add a fancy title here}
+\author{John Doe}
+\date{\today} 
+
+\begin{document}
+
+	\begin{frame}
+		\titlepage
+	\end{frame} 
+
+	\begin{frame}
+		\frametitle{Table of contents}
+		\tableofcontents
+	\end{frame} 
+
+\section{Section 1} 
+	\begin{frame}
+		\frametitle{Frame 1} 
+		
+		% \pause for showing text until here
+		% \note{Add invisible notes that may show up in presentation tool}
+		
+		% draw circle
+	   \tikz[baseline,overlay]\node[ellipse,draw,red,inner sep=-2pt] at (3.5cm,1.5cm) (marker) [
+			minimum width = 240,
+			minimum height= 70,
+			line width=.4ex
+		] {};
+		\tikzoverlay at (9cm,2cm) (paxos) {
+		  \textcolor{red}{\LARGE{ Paxos}}
+		};
+		\tikz[baseline,overlay]\draw[line width=.7ex,-triangle 60,red] (marker) -> (paxos);
+
+		
+	\end{frame}
+
+% ...
+
+\end{document}

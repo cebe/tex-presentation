@@ -1,0 +1,27 @@
+%
+% table colors
+%
+
+% allow colored tables
+% http://tex.stackexchange.com/questions/68371/how-to-highlight-table-rows-by-colors-in-beamer
+% for a more sophisticated solution see http://tex.stackexchange.com/a/18430/10327
+\rowcolors{1}{gray!30}{gray!10}
+
+\makeatletter
+\def\rowcolor{\noalign{\ifnum0=`}\fi\bmr@rowcolor}
+\newcommand<>{\bmr@rowcolor}{%
+	\alt#1%
+	{\global\let\CT@do@color\CT@@do@color\@ifnextchar[\CT@rowa\CT@rowb}%
+		{\ifnum0=`{\fi}\@gooble@rowcolor}%
+}
+
+\newcommand{\@gooble@rowcolor}[2][]{\@gooble@rowcolor@}
+\newcommand{\@gooble@rowcolor@}[1][]{\@gooble@rowcolor@@}
+\newcommand{\@gooble@rowcolor@@}[1][]{\ignorespaces}
+\makeatother
+
+\usepackage{color, colortbl}
+\definecolor{LRed}{rgb}{1,.8,.8}
+\definecolor{MRed}{rgb}{1,.6,.6}
+\definecolor{HRed}{rgb}{1,.2,.2}
+
